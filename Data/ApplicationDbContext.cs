@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Gestao.Models;
+using InfnetMVC.Models;
 
-namespace Gestao.Data;
+namespace InfnetMVC.Data;
 
 public class ApplicationDbContext : IdentityDbContext
 {

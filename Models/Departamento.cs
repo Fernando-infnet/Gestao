@@ -4,21 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace Gestao.Models
+namespace InfnetMVC.Models
 {
     public class Departamento
     {
         [Key]
-        public int Id { get; set; }
+        public int DepartamentoId { get; set; }
+
         [Required(ErrorMessage = "Informe o Nome")]
         public string Nome { get; set; }
+
         [Required(ErrorMessage = "Informe o Local")]
         public string Local { get; set; }
-        public List<Funcionario>? Funcionarios { get; set; }
-
-        public Departamento()
-        {
-            Funcionarios = new List<Funcionario>();
-        }
     }
 }
