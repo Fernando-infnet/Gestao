@@ -67,12 +67,11 @@ namespace InfnetMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("FuncionarioId,Nome,Endereco,Telefone,Email,DataNascimento,DepartamentoId")] Funcionario funcionario)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(funcionario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            
+            _context.Add(funcionario);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+            
             ViewData["DepartamentoId"] = new SelectList(_context.Departamentos, "DepartamentoId", "Local", funcionario.DepartamentoId);
             return View(funcionario);
         }
