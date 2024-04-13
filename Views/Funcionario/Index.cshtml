@@ -1,3 +1,4 @@
+@using (Html.BeginForm("Index", "Funcionario", FormMethod.Get))
 @model IEnumerable<InfnetMVC.Models.Funcionario>
 
 @{
@@ -75,8 +76,26 @@
 <h1>Index</h1>
 
 <p>
+    @if (!String.IsNullOrEmpty(ViewData["nomePesquisa"] as string))
+    {
+        <text>Resultados para: "<strong>@ViewData["nomePesquisa"]</strong>"</text>
+    }
+    else
+    {
+        <text>Todos os funcionários:</text>
+    }
+</p>
+
+<p>
     <a asp-action="Create">Criar Novo</a>
 </p>
+
+<form asp-action="Index">
+    <p>
+        Nome: <input type="text" name="nomePesquisa" value="@ViewData["nomePesquisa"]" />
+        <input type="submit" value="Buscar" />
+    </p>
+</form>
 
 <div class="grid">
     <div class="containers">

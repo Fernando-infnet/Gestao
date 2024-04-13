@@ -19,11 +19,19 @@ namespace InfnetMVC.Controllers
             _context = context;
         }
 
-        // GET: Funcionario
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nomePesquisa)
         {
-            var applicationDbContext = _context.Funcionarios.Include(f => f.Departamento);
-            return View(await applicationDbContext.ToListAsync());
+            // Get all employees if no search parameter is provided
+            var funcionarios = _context.Funcionarios.ToList();
+
+            // Filter employees by name if a search parameter is provided
+            if (!string.IsNullOrEmpty(nomePesquisa))
+            {
+                funcionarios = funcionarios.Where(f => f.Nome.Contains(nomePesquisa)).ToList();
+            }
+
+            ViewData["nomePesquisa"] = nomePesquisa; // Preserve search term for view
+            return View(funcionarios);
         }
 
         // GET: Funcionario/Details/5
