@@ -4,51 +4,59 @@
     ViewData["Title"] = "Details";
 }
 
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .containers {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .variable {
+            margin-bottom: 10px;
+        }
+        .variable span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
 <h1>Details</h1>
 
-<div>
-    <h4>Funcionario</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Endereco)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Endereco)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DataNascimento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DataNascimento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Departamento)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Departamento.Local)
-        </dd>
-    </dl>
-</div>
+    <div class="containers">
+        <div class = "variable">
+            @Html.DisplayNameFor(model => model.Nome) <span>@Html.DisplayFor(model => model.Nome)</span>
+        </div>
+        <div class = "variable">
+            @Html.DisplayNameFor(model => model.Endereco) <span>@Html.DisplayFor(model => model.Endereco)</span>
+        </div>
+        <div class = "variable">
+            @Html.DisplayNameFor(model => model.Telefone) <span>@Html.DisplayFor(model => model.Telefone)</span>
+        </div>
+        <div class = "variable">
+            @Html.DisplayNameFor(model => model.Email) <span>@Html.DisplayFor(model => model.Email)</span>
+        </div>
+        <div class = "variable">
+            @Html.DisplayNameFor(model => model.DataNascimento) <span>@Html.DisplayFor(model => model.DataNascimento)</span>
+        </div>
+        <div class = "variable">
+            @Html.DisplayNameFor(model => model.Departamento) <span>@Html.DisplayFor(model => model.Departamento)</span>
+        </div>
+    </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.FuncionarioId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">De volta à lista</a>
 </div>

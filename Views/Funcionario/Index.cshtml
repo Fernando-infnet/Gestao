@@ -4,62 +4,109 @@
     ViewData["Title"] = "Index";
 }
 
+<head>
+    <style>
+        .titulo{
+            font-weight: bold;
+        }
+        .tituloBox{
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto;
+            width: 100%;
+            gap: 10px;
+        }
+        .containers{
+            grid-column-start: 1;
+            grid-column-end: 13;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: auto;
+            justify-items: center;
+            align-content: center;
+            width: 100%;
+            gap: 10px;
+        }
+        .boxs{
+            grid-column: span 4;
+            width: 300px;
+            height: 250px;
+            border-radius: 20px;
+            background: rgb(9,9,121);
+            background: linear-gradient(90deg, rgba(9,9,121,1) 0%, rgba(0,0,0,1) 0%, rgba(78,78,78,1) 100%);
+            padding: 20px 0 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: start;
+            color: white;
+        }
+        .list{
+            display: inline-flex;
+            margin-top: auto; /* Push to the bottom */
+            place-self: center;
+            padding: 5px 10px 5px 10px;
+            background-color: #31313a;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .centro{
+            justify-self: center;
+            margin-top: auto;
+        }
+        ul{
+            list-style-type: none;
+        }
+        li{
+            list-style-type: none;
+        }
+        .link{
+            color: white;
+            text-decoration:  none !important;
+            
+        }
+    </style>
+</head>
+
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Criar Novo</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DataNascimento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Departamento)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Endereco)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataNascimento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Departamento.Local)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.FuncionarioId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.FuncionarioId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.FuncionarioId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+<div class="grid">
+    <div class="containers">
+    @foreach (var item in Model){
+        <div class="boxs">
+            <div class="centro">
+                <li class = "variable">
+                    <span class="tituloBox">@Html.DisplayNameFor(model => model.Nome) </span>@Html.DisplayFor(modelItem => item.Nome)
+                </li>
+                <li class = "variable">
+                    <span class="tituloBox">@Html.DisplayNameFor(model => model.Endereco) </span>@Html.DisplayFor(modelItem => item.Endereco)
+                </li>
+                <li class = "variable">
+                    <span class="tituloBox">@Html.DisplayNameFor(model => model.Telefone) </span>@Html.DisplayFor(modelItem => item.Telefone)
+                </li>
+                <li class = "variable">
+                    <span class="tituloBox">@Html.DisplayNameFor(model => model.Email) </span>@Html.DisplayFor(modelItem => item.Email)
+                </li>
+                <li class = "variable">
+                    <span class="tituloBox">@Html.DisplayNameFor(model => model.DataNascimento) </span>@Html.DisplayFor(modelItem => item.DataNascimento)
+                </li>
+            </div>
+            <div class="list">
+                <div class="link">
+                    <a asp-action="Edit" asp-route-id="@item.DepartamentoId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DepartamentoId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DepartamentoId">Delete</a>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+</div>
