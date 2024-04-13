@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace InfnetMVC.Migrations
 {
     /// <inheritdoc />
@@ -192,6 +194,24 @@ namespace InfnetMVC.Migrations
                         principalTable: "Departamentos",
                         principalColumn: "DepartamentoId",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Departamentos",
+                columns: new[] { "DepartamentoId", "Local", "Nome" },
+                values: new object[,]
+                {
+                    { 1, "Local Estático", "Departamento Estático" },
+                    { 2, "Local Estático B", "Departamento Estático B" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Funcionarios",
+                columns: new[] { "FuncionarioId", "DataNascimento", "DepartamentoId", "Email", "Endereco", "Nome", "Telefone" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(2004, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "jose@gmail.com", "Endereço 1", "José", "5555-5555" },
+                    { 2, new DateTime(1998, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), 2, "fernando@gmail.com", "123 Main St", "Fernando", "6666-6666" }
                 });
 
             migrationBuilder.CreateIndex(

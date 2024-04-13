@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfnetMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240413063753_Initial")]
+    [Migration("20240413153810_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -37,6 +37,20 @@ namespace InfnetMVC.Migrations
                     b.HasKey("DepartamentoId");
 
                     b.ToTable("Departamentos");
+
+                    b.HasData(
+                        new
+                        {
+                            DepartamentoId = 1,
+                            Local = "Local Estático",
+                            Nome = "Departamento Estático"
+                        },
+                        new
+                        {
+                            DepartamentoId = 2,
+                            Local = "Local Estático B",
+                            Nome = "Departamento Estático B"
+                        });
                 });
 
             modelBuilder.Entity("InfnetMVC.Models.Funcionario", b =>
@@ -73,6 +87,28 @@ namespace InfnetMVC.Migrations
                     b.HasIndex("DepartamentoId");
 
                     b.ToTable("Funcionarios");
+
+                    b.HasData(
+                        new
+                        {
+                            FuncionarioId = 1,
+                            DataNascimento = new DateTime(2004, 10, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DepartamentoId = 1,
+                            Email = "jose@gmail.com",
+                            Endereco = "Endereço 1",
+                            Nome = "José",
+                            Telefone = "5555-5555"
+                        },
+                        new
+                        {
+                            FuncionarioId = 2,
+                            DataNascimento = new DateTime(1998, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            DepartamentoId = 2,
+                            Email = "fernando@gmail.com",
+                            Endereco = "123 Main St",
+                            Nome = "Fernando",
+                            Telefone = "6666-6666"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

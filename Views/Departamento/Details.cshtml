@@ -4,32 +4,48 @@
     ViewData["Title"] = "Details";
 }
 
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .containers {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .variable {
+            margin-bottom: 10px;
+        }
+        .variable span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
 <h1>Details</h1>
 
-<div>
-    <h4>Departamento</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DepartamentoId)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DepartamentoId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Local)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Local)
-        </dd>
-    </dl>
+<div class="containers">
+    <h1>Dados</h1>
+    <div class="variable">
+        <span>@Html.DisplayNameFor(model => model.Nome)</span> @Html.DisplayFor(model => model.Nome)
+    </div>
+    <div class="variable">
+        <span>@Html.DisplayNameFor(model => model.Local)</span> @Html.DisplayFor(model => model.Local)
+    </div>
 </div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.DepartamentoId">Edit</a> |
     <a asp-action="Index">Back to List</a>
